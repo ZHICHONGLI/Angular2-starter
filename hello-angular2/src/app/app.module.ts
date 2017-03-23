@@ -4,17 +4,22 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
+import { LComponent } from './l/l.component';
+import {AuthService} from './core/auth.service';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [
+    {provide: 'auth', useClass: AuthService}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

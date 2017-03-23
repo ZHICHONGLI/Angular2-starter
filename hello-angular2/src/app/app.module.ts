@@ -6,11 +6,13 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { LComponent } from './l/l.component';
 import {AuthService} from './core/auth.service';
+import { Login2waydbComponent } from './login-2waydb/login-2waydb.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LComponent
+    LComponent,
+    Login2waydbComponent
   ],
   imports: [
     BrowserModule,

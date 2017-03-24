@@ -10,8 +10,8 @@ import { LComponent } from './l/l.component';
 import {AuthService} from './core/auth.service';
 import { Login2waydbComponent } from './login-2waydb/login-2waydb.component';
 //import { TodoComponent } from './todo/todo.component';
-import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemHeroService } from './todo/todo-data';
+//import { InMemoryWebApiModule } from 'angular-in-memory-web-api'; //remove this by using json-server
+//import { InMemHeroService } from './todo/todo-data';
 //import { TodoFooterComponent } from './todo/todo-footer/todo-footer.component';
 //import { TodoHeaderComponent } from './todo/todo-header/todo-header.component';
 import { TodoModule } from './todo/todo.module';
@@ -29,7 +29,7 @@ import { TodoModule } from './todo/todo.module';
     BrowserModule,
     FormsModule,
     HttpModule,
-    InMemoryWebApiModule.forRoot(InMemHeroService),
+  //  InMemoryWebApiModule.forRoot(InMemHeroService), //removed due to json-server has been used as data server
     routing, // import from ts file from './app.routes.ts'
     TodoModule
   ],

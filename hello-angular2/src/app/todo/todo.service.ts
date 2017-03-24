@@ -9,7 +9,8 @@ import { Todo } from './todo.model';
 export class TodoService {
 
 // WebApi 
-private api_url = 'api/todos';
+//private api_url = 'api/todos';
+private api_url = 'http://localhost:3000/todos';
 private headers = new Headers ({'Content-Type':'application/json'});
 
 //  todos: Todo[] = [];
@@ -30,7 +31,8 @@ private headers = new Headers ({'Content-Type':'application/json'});
     return this.http
             .post(this.api_url, JSON.stringify(todo), {headers: this.headers})
             .toPromise()
-            .then(res => res.json().data as Todo)
+            //.then(res => res.json().data as Todo)
+            .then(res =>res.json() as Todo)
             .catch(this.handleError);
   }
     // PUT /todos/:id
@@ -57,7 +59,8 @@ private headers = new Headers ({'Content-Type':'application/json'});
   getTodos(): Promise<Todo[]>{
     return this.http.get(this.api_url)
               .toPromise()
-              .then(res => res.json().data as Todo[])
+              //.then(res => res.json().data as Todo[])
+              .then(res => res.json() as Todo[])
               .catch(this.handleError);
   }
 

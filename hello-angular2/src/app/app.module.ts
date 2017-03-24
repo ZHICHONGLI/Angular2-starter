@@ -10,6 +10,8 @@ import { LComponent } from './l/l.component';
 import {AuthService} from './core/auth.service';
 import { Login2waydbComponent } from './login-2waydb/login-2waydb.component';
 import { TodoComponent } from './todo/todo.component';
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemHeroService } from './todo/todo-data';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,7 @@ import { TodoComponent } from './todo/todo.component';
     BrowserModule,
     FormsModule,
     HttpModule,
+    InMemoryWebApiModule.forRoot(InMemHeroService),
     routing // import from ts file from './app.routes.ts'
   ],
   providers: [

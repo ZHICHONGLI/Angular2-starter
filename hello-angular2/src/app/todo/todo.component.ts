@@ -25,7 +25,7 @@ export class TodoComponent implements OnInit {
     }); 
   }
 
-    toggleTodo(todo: Todo) {
+  toggleTodo(todo: Todo) {
     const i = this.todos.indexOf(todo);
     this.service
       .toggleTodo(todo)

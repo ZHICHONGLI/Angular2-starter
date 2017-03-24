@@ -2,7 +2,7 @@
 
 import { Routes, RouterModule } from '@angular/router';
 import { Login2waydbComponent } from './login-2waydb/login-2waydb.component';
-import { TodoComponent } from './todo/todo.component'
+//import { TodoComponent } from './todo/todo.component'
 
 export const routes: Routes = [
     {
@@ -11,7 +11,7 @@ export const routes: Routes = [
         pathMatch:'full'
     },{
         path:'todo',
-        component: TodoComponent
+        redirectTo: 'todo'
     },
     {
         path:'login',

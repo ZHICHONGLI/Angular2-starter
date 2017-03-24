@@ -53,4 +53,8 @@ export class TodoComponent implements OnInit {
       .getTodos()
       .then(todos => this.todos = [...todos]);
   }
+
+  onTextChanges(value) {
+    this.desc = value;
+  }
 }

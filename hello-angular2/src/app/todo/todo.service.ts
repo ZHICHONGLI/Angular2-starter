@@ -55,7 +55,7 @@ private headers = new Headers ({'Content-Type':'application/json'});
             .then(() => null)
             .catch(this.handleError);
   }
-  // GET /todos
+  // GET /todos       // could be removed after using filter routing
   getTodos(): Promise<Todo[]>{
     return this.http.get(this.api_url)
               .toPromise()
@@ -63,6 +63,26 @@ private headers = new Headers ({'Content-Type':'application/json'});
               .then(res => res.json() as Todo[])
               .catch(this.handleError);
   }
+
+  // GET /todos?completed=true/false
+  filterTodos(filter: string): Promise<Todo[]> {
+    switch(filter){
+      case 'ACTIVE': return this.http
+                        .get(`${this.api_url}?completed=false`)
+                        .toPromise()
+                        .then(res => res.json() as Todo[])
+                        .catch(this.handleError);
+      case 'COMPLETED': return this.http
+                          .get(`${this.api_url}?completed=true`)
+                          .toPromise()
+                          .then(res => res.json() as Todo[])
+                          .catch(this.handleError);
+      default:
+        return this.getTodos();
+    }
+  }
+
+
 
   private handleError(error: any): Promise<any>{
     console.error('ERROR: ', error);

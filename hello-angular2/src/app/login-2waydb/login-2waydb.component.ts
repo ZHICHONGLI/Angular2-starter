@@ -1,4 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
+import { Router, ActivatedRoute, Params } from '@angular/router';
+
+import { Auth } from '../domain/entities';
 
 @Component({
   selector: 'app-login-2waydb',
@@ -12,11 +15,12 @@ import { Component, OnInit, Inject } from '@angular/core';
               [(ngModel)]="username" 
               type="text" #usernameRef="ngModel" 
               required 
-              minlength="5" name="username" 
+              minlength="3" name="username" 
               placeholder="please input username">
           {{usernameRef.errors | json}}
           <div *ngIf="usernameRef.errors?.required">value required</div>
-          <div *ngIf="usernameRef.errors?.minlength">at least 5 chars</div>
+          <div *ngIf="usernameRef.errors?.minlength">at least 3 chars</div>
+          <div *ngIf="auth?.hasError">{{auth.errMsg}}</div>
           <br>
           <input 
               class="ng-pristine ng-invalid ng-touched"
@@ -26,10 +30,11 @@ import { Component, OnInit, Inject } from '@angular/core';
               placeholder="please input password">
           {{passwordRef.errors | json}}
           <div *ngIf="passwordRef.errors?.required">input required</div>
-          <button (click)="onClick()">Login by onClick</button>
-
-          <button type="submit">Login by submit</button>
+<!--          <button (click)="onClick()">Login by onClick</button>
+-->
+          
         </fieldset>
+        <button type="submit">Login by submit</button>
       </form>
     </div>
   `,
@@ -45,16 +50,31 @@ import { Component, OnInit, Inject } from '@angular/core';
 export class Login2waydbComponent implements OnInit {
   username :string;
   password :string;
-  constructor(@Inject('auth') private service) { }
+  auth: Auth;
+  constructor(@Inject('auth') private service, private router: Router) { }
 
   ngOnInit() {
   }
 
-  onClick(username, password){
-   console.log('auth result is: '+ this.service.loginWithCredentials(this.username, this.password));
- }
+ // onClick(username, password){
+//   console.log('auth result is: '+ this.service.loginWithCredentials(this.username, this.password));
+ //}
 
- onSubmit(value){
-    console.log('auth result: '+ this.service.loginWithCredentials(value.login.username, value.login.password));
- }
+ onSubmit(formValue){
+//console.log("submit formValue for auth");
+    this.service
+      .loginWithCredentials(formValue.login.username, formValue.login.password)
+      .then(auth => {
+        let redirectUrl = (auth.redirectUrl === null)? '/': auth.redirectUrl;
+        
+        if(!auth.hasError){
+          redirectUrl = '/todo';
+          console.log(redirectUrl);
+          this.router.navigate([redirectUrl]);
+          localStorage.removeItem('redirectUrl');
+        } else {
+          this.auth = Object.assign({}, auth);
+        }
+      }); 
+    }
 }

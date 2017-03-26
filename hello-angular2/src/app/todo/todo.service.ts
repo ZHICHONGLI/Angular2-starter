@@ -4,7 +4,7 @@ import { Http, Headers } from '@angular/http';
 import { UUID } from 'angular2-uuid';
 
 import 'rxjs/add/operator/toPromise';
-import { Todo } from './todo.model';
+import { Todo } from '../domain/entities';
 @Injectable()
 export class TodoService {
 
@@ -19,12 +19,15 @@ private headers = new Headers ({'Content-Type':'application/json'});
 
   // POST todos
   addTodo(desc:string): Promise<Todo> {
+    //"+" can be used for parsing string to number
+    const userId:number = +localStorage.getItem('userId');
    // let iid = parseFloat(UUID.UUID()) ;
     let todo = {
    //   id: iid,
       id: UUID.UUID(),
       desc: desc,
-      completed: false
+      completed: false,
+      userId
     };
     //this.todos.push(todo);
     //return this.todos;
@@ -41,7 +44,7 @@ private headers = new Headers ({'Content-Type':'application/json'});
     console.log(url);
     let updatedTodo = Object.assign({}, todo, {completed: !todo.completed});
     return this.http
-            .put(url, JSON.stringify(updatedTodo), {headers: this.headers})
+            .patch(url, JSON.stringify(updatedTodo), {headers: this.headers})
             .toPromise()
             .then(() => updatedTodo)
             .catch(this.handleError);
@@ -57,7 +60,9 @@ private headers = new Headers ({'Content-Type':'application/json'});
   }
   // GET /todos       // could be removed after using filter routing
   getTodos(): Promise<Todo[]>{
-    return this.http.get(this.api_url)
+    const userId = +localStorage.getItem('userId');
+    const url = `${this.api_url}/?userId=${userId}`
+    return this.http.get(url)
               .toPromise()
               //.then(res => res.json().data as Todo[])
               .then(res => res.json() as Todo[])
@@ -66,14 +71,16 @@ private headers = new Headers ({'Content-Type':'application/json'});
 
   // GET /todos?completed=true/false
   filterTodos(filter: string): Promise<Todo[]> {
+    const userId:number = +localStorage.getItem('userId');
+    const url = `${this.api_url}/?userId=${userId}`;
     switch(filter){
       case 'ACTIVE': return this.http
-                        .get(`${this.api_url}?completed=false`)
+                        .get(`${url}?completed=false`)
                         .toPromise()
                         .then(res => res.json() as Todo[])
                         .catch(this.handleError);
       case 'COMPLETED': return this.http
-                          .get(`${this.api_url}?completed=true`)
+                          .get(`${url}?completed=true`)
                           .toPromise()
                           .then(res => res.json() as Todo[])
                           .catch(this.handleError);

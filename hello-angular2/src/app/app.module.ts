@@ -8,7 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
 
 import { AppComponent } from './app.component';
-//import { LComponent } from './l/l.component';
+import { LComponent } from './l/l.component';
 //import {AuthService} from './core/auth.service';
 import { Login2waydbComponent } from './login-2waydb/login-2waydb.component';
 //import { TodoComponent } from './todo/todo.component';
@@ -21,7 +21,7 @@ import { TodoModule } from './todo/todo.module';
 @NgModule({
   declarations: [
     AppComponent,
-    //LComponent,
+    LComponent,
     Login2waydbComponent,
    // TodoComponent,
    // TodoFooterComponent,

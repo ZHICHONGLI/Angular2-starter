@@ -12,6 +12,7 @@ import { TodoHeaderComponent } from './todo-header/todo-header.component';
 import { TodoService } from './todo.service';
 import { TodoItemComponent } from './todo-item/todo-item.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
+import { MdlModule } from 'angular2-mdl';
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import { TodoListComponent } from './todo-list/todo-list.component';
     FormsModule,
     HttpModule,
     //routing
-    TodoRoutingModule
+    TodoRoutingModule,
+    MdlModule
   ],
   declarations: [
     TodoComponent,

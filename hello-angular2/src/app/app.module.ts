@@ -17,6 +17,7 @@ import { Login2waydbComponent } from './login-2waydb/login-2waydb.component';
 //import { TodoFooterComponent } from './todo/todo-footer/todo-footer.component';
 //import { TodoHeaderComponent } from './todo/todo-header/todo-header.component';
 import { TodoModule } from './todo/todo.module';
+import { MdlModule  } from 'angular2-mdl';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { TodoModule } from './todo/todo.module';
   //  InMemoryWebApiModule.forRoot(InMemHeroService), //removed due to json-server has been used as data server
    // routing, // import from ts file from './app.routes.ts'
    AppRoutingModule,
-    TodoModule
+    TodoModule,
+    MdlModule
   ],
  // providers: [
  //   {provide: 'auth', useClass: AuthService}

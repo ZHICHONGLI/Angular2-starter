@@ -1,0 +1,48 @@
+<!--
+   <div>
+      <form #formRef="ngForm" (ngSubmit)="onSubmit(formRef.value)">
+        <fieldset ngModelGroup="login">
+          <input 
+              class="ng-pristine ng-invalid ng-touched"
+              ng-reflect-name="username"
+              [(ngModel)]="username" 
+              type="text" #usernameRef="ngModel" 
+              required 
+              minlength="3" name="username" 
+              placeholder="please input username">
+          {{usernameRef.errors | json}}
+          <div *ngIf="usernameRef.errors?.required">value required</div>
+          <div *ngIf="usernameRef.errors?.minlength">at least 3 chars</div>
+          <div *ngIf="auth?.hasError">{{auth.errMsg}}</div>
+          <br>
+          <input 
+              class="ng-pristine ng-invalid ng-touched"
+              [(ngModel)]="password" 
+              typr="password" #passwordRef="ngModel" 
+              required name="password" 
+              placeholder="please input password">
+          {{passwordRef.errors | json}}
+          <div *ngIf="passwordRef.errors?.required">input required</div>
+<!--          <button (click)="onClick()">Login by onClick</button>
+-->
+<!--         
+        </fieldset>
+        <button type="submit">Login by submit</button>
+      </form>
+    </div>     
+    
+-->
+<div>
+    <form (ngSubmit)="onSubmit()">
+        <mdl-textfield type="text" label="Username..." name="username" floating-label required [(ngModel)]="username" #usernameRef="ngModel">
+        </mdl-textfield>
+        <div *ngIf="auth?.hasError">
+            {{auth?.errMsg}}
+        </div>
+        <mdl-textfield type="password" label="Password..." name="password" floating-label required [(ngModel)]="password" #passwordRef="ngModel">
+        </mdl-textfield>
+        <button mdl-button mdl-button-type="raised" mdl-colored="primary" mdl-ripple type="submit">
+      Login
+    </button>
+    </form>
+</div>

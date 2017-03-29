@@ -10,7 +10,7 @@ import { Auth } from '../domain/entities';
    
 })
 
-export class Login2waydbComponent implements OnInit {
+export class Login2waydbComponent {
   username :string;
   password :string;
   auth: Auth;

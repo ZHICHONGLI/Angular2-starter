@@ -1,0 +1,20 @@
+<div class="login-container" fxLayout="row" fxLayoutAlign="center center" [ngStyle]="{'background-image': 'url(' + photo + ')'}">
+    <div class="fill-remaining-space" fxFlex></div>
+    <form class="login-form" (ngSubmit)="onSubmit()" fxFlex>
+        <md-input-container align="start">
+            <input mdInput type="text" placeholder="Username" [(ngModel)]="username" name="username" required #usernameRef="ngModel">
+        </md-input-container>
+        <br/>
+        <md-input-container align="start">
+            <input mdInput type="password" name="password" placeholder="Password" [(ngModel)]="password" required #passwordRef="ngModel">
+        </md-input-container>
+        <br/>
+        <button md-raised-button type="submit" [@loginState]="loginBtnState" (mouseenter)="toggleLoginState(true)" (mouseleave)="toggleLoginState(false)">
+      Login
+    </button>
+        <button md-raised-button (click)="register($event)">
+      Register
+    </button>
+    </form>
+    <div class="fill-remaining-space" fxFlex></div>
+</div>

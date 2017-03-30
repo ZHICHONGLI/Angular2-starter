@@ -1,0 +1,5 @@
+<div>
+  <md-icon (click)="toggle()" [class.icon-completed]="isChecked">check_circle</md-icon>
+  <label class="todoDesc" [class.label-completed]="isChecked" (click)="toggle()">{{todoDesc}}</label>
+  <button class="destroy" (click)="remove(); $event.stopPropagation()"></button>
+</div>

@@ -1,0 +1,31 @@
+<form [formGroup]="form">
+  <h3 md-dialog-title>Register</h3>
+  <div class="mdl-dialog__content">
+    <md-input-container align="start">
+      <input md-input type="text" placeholder="Username" formControlName="username" #firstElement>
+    </md-input-container>
+    <br/>
+    <div formGroupName="passwords" #passwordsRef>
+      <md-input-container align="start">
+        <input md-input type="password" placeholder="Password" formControlName="password">
+      </md-input-container>
+      <br/>
+      <md-input-container align="start">
+        <input md-input type="password" placeholder="Repeat Password" formControlName="repeatPassword">
+      </md-input-container>
+    </div>
+  </div>
+  <div class="status-bar" *ngIf="ifShowStatusBar">
+    <p>{{statusMessage}}</p>
+    <md-progress-spinner mode="indeterminate" color="primary"></md-progress-spinner>
+  </div>
+  <md-dialog-actions>
+    <button
+      md-raised-button
+      (click)="register()"
+      [disabled]="!form.valid || processingRegister">
+      Register
+    </button>
+    <button md-dialog-close>No</button>
+  </md-dialog-actions>
+</form>

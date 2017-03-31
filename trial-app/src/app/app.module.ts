@@ -6,7 +6,9 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { FrontPageComponent } from './front-page/front-page.component';
 //import { MaterialModule } from '@angular/material';
-import { AlertModule } from 'ng2-bootstrap';
+//import { AlertModule } from 'ng2-bootstrap';
+import { RouterModule } from '@angular/router';
+import { AppRoutingModule } from './app.routing.module';
 
 
 @NgModule({
@@ -19,7 +21,8 @@ import { AlertModule } from 'ng2-bootstrap';
     FormsModule,
     HttpModule,
     //MaterialModule,
-    AlertModule.forRoot()
+   // AlertModule.forRoot()
+   AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

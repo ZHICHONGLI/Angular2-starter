@@ -5,6 +5,9 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { FrontPageComponent } from './front-page/front-page.component';
+//import { MaterialModule } from '@angular/material';
+import { AlertModule } from 'ng2-bootstrap';
+
 
 @NgModule({
   declarations: [
@@ -14,7 +17,9 @@ import { FrontPageComponent } from './front-page/front-page.component';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    //MaterialModule,
+    AlertModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

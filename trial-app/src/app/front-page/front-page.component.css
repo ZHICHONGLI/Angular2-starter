@@ -2,3 +2,13 @@
     text-align: center;
     color: cadetblue
 }
+
+#footer {
+    background-color: #e3f2fd;
+    text-align: center;
+    padding: 15px;
+    position: fixed;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+}

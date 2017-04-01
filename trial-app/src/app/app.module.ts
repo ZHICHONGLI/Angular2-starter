@@ -9,12 +9,16 @@ import { FrontPageComponent } from './front-page/front-page.component';
 //import { AlertModule } from 'ng2-bootstrap';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app.routing.module';
+import { ManagerPageComponent } from './manager-page/manager-page.component';
+import { ClientPageComponent } from './client-page/client-page.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    FrontPageComponent
+    FrontPageComponent,
+    ManagerPageComponent,
+    ClientPageComponent
   ],
   imports: [
     BrowserModule,

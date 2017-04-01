@@ -51,7 +51,7 @@ export class ManagerPageComponent implements OnInit {
 
  }
  delPrd(prd:any){
-   
+
  }
 prds=[
   {

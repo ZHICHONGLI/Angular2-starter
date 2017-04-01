@@ -9,16 +9,19 @@ import { FrontPageComponent } from './front-page/front-page.component';
 //import { AlertModule } from 'ng2-bootstrap';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app.routing.module';
-import { ManagerPageComponent } from './manager-page/manager-page.component';
+//import { ManagerPageComponent } from './manager-page/manager-page.component';
 import { ClientPageComponent } from './client-page/client-page.component';
-
+import { ModalModule } from 'ng2-bootstrap';
+//import { AddnewComponent } from './manager-page/addnew/addnew.component';
+import { ManagerPageModule } from './manager-page/manager-page.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     FrontPageComponent,
-    ManagerPageComponent,
-    ClientPageComponent
+  //  ManagerPageComponent,
+    ClientPageComponent,
+  //  AddnewComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +29,9 @@ import { ClientPageComponent } from './client-page/client-page.component';
     HttpModule,
     //MaterialModule,
    // AlertModule.forRoot()
-   AppRoutingModule
+   AppRoutingModule,
+   ModalModule,
+   ManagerPageModule
   ],
   providers: [],
   bootstrap: [AppComponent]

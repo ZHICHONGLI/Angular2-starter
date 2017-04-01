@@ -25,6 +25,7 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
+                            <th>#</th>
                             <th>ID</th>
                             <th>Name</th>
                             <th>Price</th>
@@ -36,18 +37,21 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="x in prdList |filter: search">
-                            <td>{{x.id}}</td>
-                            <td>{{x.Name}}</td>
-                            <td>{{x.Price}}</td>
-                            <td> <span ng-click="stockEdit(x)" ng-bind="x.Stock" ng-hide="activeItem == x"></span><input only-numbers ng-model="x.Stock" ng-show="activeItem == x" size="6"> <a href="#/" ng-click="updateStock(x)" ng-show="activeItem == x"> update |</a>
-                                <a href="#/" ng-click="hideStock(x)" ng-show="activeItem == x"> cancel</a>
+                        <tr *ngFor="let prd of prds; let i = index">
+                            <!--ADD FILTER SEARCH -->
+                            <td>{{i+1}}</td>
+                            <td>{{prd.id}}</td>
+                            <td>{{prd.Name}}</td>
+                            <td>{{prd.Price}}</td>
+                            <td> <span (click)="stockEdit(prd) " [hidden]="activeItem==prd">{{prd.Stock}}</span><input [(ngModel)]="prd.Stock" [hidden]="activeItem!==prd" size="6">
+                                <a (click)="updateStock(prd) " [hidden]="activeItem!==prd"> update |</a>
+                                <a (click)="stockHide() " [hidden]="activeItem!==prd"> cancel</a>
                             </td>
-                            <td>{{x.Packing}}</td>
-                            <td>{{x.Description}}</td>
-                            <td><button ng-class="statusCls(x)" ng-click="statusChange(x, $event)">{{statusAct(x)}}</button></td>
-                            <td><button class="w3-btn w3-teal" ng-click="editPrd(x)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-                                <button class="w3-btn w3-ripple" ng-click="delPrd(x)"><i class="fa fa-trash" aria-hidden="true"></i></button></td>
+                            <td>{{prd.Packing}}</td>
+                            <td>{{prd.Description}}</td>
+                            <td><button ng-class="statusCls(x) ">{{prd.Status}}</button></td>
+                            <td><button class="w3-btn w3-teal " ng-click="editPrd(x) "><i class="fa fa-pencil-square-o " aria-hidden="true "></i></button>
+                                <button class="w3-btn w3-ripple " ng-click="delPrd(x) "><i class="fa fa-trash " aria-hidden="true "></i></button></td>
                         </tr>
                     </tbody>
 

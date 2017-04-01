@@ -9,10 +9,10 @@ const routes: Routes =[
         path: '',
         component: FrontPageComponent
     },{
-        path: 'manager',
+        path: 'client',
         component: ClientPageComponent
     },{
-        path: 'client',
+        path: 'manager',
         component: ManagerPageComponent
     }
 ];

@@ -1,36 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import '../data';
 
-@Component({
-  selector: 'app-manager-page',
-  templateUrl: './manager-page.component.html',
-  styleUrls: ['./manager-page.component.css']
-})
-export class ManagerPageComponent implements OnInit {
-
-  constructor() {
-   
-   }
-
-  ngOnInit() {
-  }
-  activeItem = false;
-  updateStock(prd:any){
-    //prd.Stock = ; http.put
-    this.activeItem = false;
-  };
-  stockEdit(prd:any){
-    this.activeItem = prd;
- //   this.stockShow = !this.stockShow; 
-
-  };
-  stockHide(){
-   // console.log("stockHide");
-    this.activeItem = false;
-   // console.log(this.activeItem);
-  };
- // stockShow:boolean = true;
-prds=[
+let products=[
   {
     "_id": "5892e60cdad88a018821732d",
     "id": 949,
@@ -152,5 +121,5 @@ prds=[
     "__v": 0
   }
 ];
-  
-}
+
+

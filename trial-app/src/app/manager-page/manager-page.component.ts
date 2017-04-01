@@ -30,6 +30,29 @@ export class ManagerPageComponent implements OnInit {
    // console.log(this.activeItem);
   };
  // stockShow:boolean = true;
+ statusEdit(prd:any){
+  prd.Status = !prd.Status;
+  console.log(prd.Status);
+ }
+ statusShow(status:boolean){
+  if (status == true){
+    return "Active";
+  }else 
+  return "Inactive";
+ }
+ statusCls(status:boolean){
+   if (status == true) {
+            return "btn btn-success";
+        } else {
+            return "btn btn-outline-secondary"
+        };
+ }
+ editPrd(prd:any){
+
+ }
+ delPrd(prd:any){
+   
+ }
 prds=[
   {
     "_id": "5892e60cdad88a018821732d",

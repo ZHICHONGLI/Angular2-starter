@@ -44,14 +44,18 @@
                             <td>{{prd.Name}}</td>
                             <td>{{prd.Price}}</td>
                             <td> <span (click)="stockEdit(prd) " [hidden]="activeItem==prd">{{prd.Stock}}</span><input [(ngModel)]="prd.Stock" [hidden]="activeItem!==prd" size="6">
-                                <a (click)="updateStock(prd) " [hidden]="activeItem!==prd"> update |</a>
-                                <a (click)="stockHide() " [hidden]="activeItem!==prd"> cancel</a>
+
+                                <span [hidden]="activeItem!==prd">
+                                    <span class="pointerstyle" (click)="updateStock(prd) ">update</span>
+                                <span>  | </span>
+                                <span class="pointerstyle" (click)="stockHide() "> cancel</span>
+                                </span>
                             </td>
                             <td>{{prd.Packing}}</td>
                             <td>{{prd.Description}}</td>
-                            <td><button ng-class="statusCls(x) ">{{prd.Status}}</button></td>
-                            <td><button class="w3-btn w3-teal " ng-click="editPrd(x) "><i class="fa fa-pencil-square-o " aria-hidden="true "></i></button>
-                                <button class="w3-btn w3-ripple " ng-click="delPrd(x) "><i class="fa fa-trash " aria-hidden="true "></i></button></td>
+                            <td><button [className]="statusCls(prd.Status)" (click)="statusEdit(prd)">{{statusShow(prd.Status)}}</button></td>
+                            <td><button class="btn btn-secondary" (click)="editPrd(prd) "><i class="fa fa-pencil-square-o " aria-hidden="true "></i></button>
+                                <button class="btn btn-secondary" (click)="delPrd(prd) "><i class="fa fa-trash " aria-hidden="true "></i></button></td>
                         </tr>
                     </tbody>
 

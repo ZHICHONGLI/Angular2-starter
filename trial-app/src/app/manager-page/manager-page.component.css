@@ -5,3 +5,14 @@
 .newprd {
     margin: 5px
 }
+
+.pointerstyle {
+    cursor: pointer;
+    text-decoration: underline !important;
+    color: dodgerblue !important
+}
+
+.pointerstyle:hover {
+    background-color: lightgoldenrodyellow;
+    color: red !important
+}

@@ -1,5 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import '../data';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { ModalDirective,ModalModule } from 'ng2-bootstrap';
+import { AddnewComponent } from './addnew/addnew.component';
 
 @Component({
   selector: 'app-manager-page',
@@ -7,13 +11,31 @@ import '../data';
   styleUrls: ['./manager-page.component.css']
 })
 export class ManagerPageComponent implements OnInit {
-
-  constructor() {
-   
+  closeResult: string;
+  constructor(private modalService: NgbModal, private ViewContainerRef: ViewContainerRef) {
+   this.ViewContainerRef = ViewContainerRef;
    }
 
   ngOnInit() {
   }
+ 
+  open(content){
+    this.modalService.open(content).result.then((result)=>{
+      this.closeResult = `Closed with: ${result}`;
+    },(reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return  `with: ${reason}`;
+    }
+  }
+
   activeItem = false;
   updateStock(prd:any){
     //prd.Stock = ; http.put
@@ -53,7 +75,7 @@ export class ManagerPageComponent implements OnInit {
  delPrd(prd:any){
 
  }
-prds=[
+prds =[
   {
     "_id": "5892e60cdad88a018821732d",
     "id": 949,

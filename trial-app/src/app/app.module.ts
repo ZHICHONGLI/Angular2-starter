@@ -11,9 +11,10 @@ import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app.routing.module';
 //import { ManagerPageComponent } from './manager-page/manager-page.component';
 import { ClientPageComponent } from './client-page/client-page.component';
-import { ModalModule } from 'ng2-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 //import { AddnewComponent } from './manager-page/addnew/addnew.component';
 import { ManagerPageModule } from './manager-page/manager-page.module';
+import { ModalDirective, ModalModule } from 'ng2-bootstrap';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { ManagerPageModule } from './manager-page/manager-page.module';
    // AlertModule.forRoot()
    AppRoutingModule,
    ModalModule,
-   ManagerPageModule
+   ManagerPageModule,
+   NgbModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,Input, OnInit, ViewChild, ElementRef } from '@angular/core';
+import {ModalDirective} from 'ng2-bootstrap';
 
 @Component({
   selector: 'app-addnew',
   templateUrl: './addnew.component.html',
-  styleUrls: ['./addnew.component.css']
+  styleUrls: ['./addnew.component.css'],
+  exportAs: 'Addnew'
 })
 export class AddnewComponent implements OnInit {
 
@@ -11,5 +13,11 @@ export class AddnewComponent implements OnInit {
 
   ngOnInit() {
   }
+ @ViewChild('lgModal') lgModal; 
+
+  show(){
+    this.lgModal.show(); 
+  }
+
 
 }

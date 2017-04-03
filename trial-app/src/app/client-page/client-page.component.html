@@ -3,9 +3,6 @@
         <h1>Products</h1>
     </div>
     <div class="row">
-        <button class="btn btn-primary newprd" (click)="addPrd()"><i class="fa fa-plus" aria-hidden="true"></i> Add New Product</button>
-    </div>
-    <div class="row">
         <div class="card">
             <div class="card-header row">
                 <div class="col-md-8 ">
@@ -13,10 +10,9 @@
                 </div>
                 <div class="col-md-4">
                     <div class="row">
-                        <div class="col-md-2"> Filter:</div>
-                        <div class="input-group col-md-10">
+                        <div class="input-group ">
                             <span class="input-group-addon"><i class="fa fa-search" aria-hidden="true"></i></span>
-                            <input id="msg" type="text" class="form-control" name="msg" ng-model="search" placeholder="Filter product list...">
+                            <input id="msg" type="text" class="form-control" [(ngModel)]="search" name="msg" placeholder="Search by name or description...">
                         </div>
                     </div>
                 </div>
@@ -36,23 +32,17 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let prd of prds; let i = index">
+                        <tr *ngFor="let prd of product | searchFilter: search ; let i = index ">
                             <!--ADD FILTER SEARCH -->
                             <td>{{i+1}}</td>
                             <td>{{prd.id}}</td>
                             <td>{{prd.Name}}</td>
                             <td>{{prd.Price}}</td>
-                            <td> <span (click)="stockEdit(prd) " [hidden]="activeItem==prd">{{prd.Stock}}</span><input [(ngModel)]="prd.Stock" [hidden]="activeItem!==prd" size="6">
-
-                                <span [hidden]="activeItem!==prd">
-                                    <span class="pointerstyle" (click)="updateStock(prd) ">update</span>
-                                <span>  | </span>
-                                <span class="pointerstyle" (click)="stockHide() "> cancel</span>
-                                </span>
+                            <td> <span (click)="stockEdit(prd) ">{{stockShow(prd.Status, prd.Stock)}}</span>
                             </td>
                             <td>{{prd.Packing}}</td>
                             <td>{{prd.Description}}</td>
-                            <td><button [className]="statusCls(prd.Status)" (click)="statusEdit(prd)">{{statusShow(prd.Status)}}</button></td>
+                            <td><button [className]="statusCls(prd.Status)">{{statusShow(prd.Status)}}</button></td>
                         </tr>
                     </tbody>
 

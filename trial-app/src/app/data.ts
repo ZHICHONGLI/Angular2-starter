@@ -1,5 +1,7 @@
-export class data{
- products:any=[
+export var products;
+  products =  
+    
+   [
   {
     "_id": "5892e60cdad88a018821732d",
     "id": 949,
@@ -121,7 +123,4 @@ export class data{
     "__v": 0
   }
 ];
-
-
-
-}
+ 

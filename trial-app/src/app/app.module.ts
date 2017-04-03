@@ -15,6 +15,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 //import { AddnewComponent } from './manager-page/addnew/addnew.component';
 import { ManagerPageModule } from './manager-page/manager-page.module';
 import { ModalDirective, ModalModule } from 'ng2-bootstrap';
+import { searchFilter } from './client-page/client-page.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { ModalDirective, ModalModule } from 'ng2-bootstrap';
     FrontPageComponent,
   //  ManagerPageComponent,
     ClientPageComponent,
+    searchFilter
   //  AddnewComponent
   ],
   imports: [

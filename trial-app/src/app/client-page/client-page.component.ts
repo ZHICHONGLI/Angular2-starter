@@ -1,17 +1,54 @@
-import { Component, OnInit } from '@angular/core';
-import { data } from '../data';
+import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
+import {products} from '../data';
 @Component({
   selector: 'app-client-page',
   templateUrl: './client-page.component.html',
   styleUrls: ['./client-page.component.css']
 })
+
+
+
 export class ClientPageComponent implements OnInit {
 
-  constructor() { 
+  constructor() {
+   
   }
-  product:any = data.prototype.products;//TODO
-  ngOnInit() {
-    console.log(this.product );
-  }
+  search : any="";
 
+
+  product:any = products;
+  ngOnInit() {
+    console.log(products );
+  }
+ statusShow(status:boolean){
+  if (status == true){
+    return "In Stock";
+  }else 
+  return "Out of Stock";
+ }
+ statusCls(status:boolean){
+   if (status == true) {
+            return "btn btn-success";
+        } else {
+            return "btn btn-outline-secondary"
+        };
+ }
+ stockShow(status:boolean, stock:number){
+  if (status == true){
+    let stockString: string = stock.toFixed();
+    return stockString;
+  }else{
+    return "/"
+  }
+ }
+}
+
+@Pipe({
+    name: 'searchFilter'
+})
+export class searchFilter implements PipeTransform{
+    transform(items:any[], args: any):any{
+      args = args.toUpperCase();
+    return items.filter(prd => prd.Name.toUpperCase().indexOf(args) !== -1 ||prd.Description.toUpperCase().indexOf(args) !== -1 );
+  }
 }

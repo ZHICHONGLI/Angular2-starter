@@ -4,19 +4,13 @@ import {ModalDirective} from 'ng2-bootstrap';
 @Component({
   selector: 'app-addnew',
   templateUrl: './addnew.component.html',
-  styleUrls: ['./addnew.component.css'],
-  exportAs: 'Addnew'
+  styleUrls: ['./addnew.component.css']
 })
 export class AddnewComponent implements OnInit {
 
   constructor() { }
 
   ngOnInit() {
-  }
- @ViewChild('lgModal') lgModal; 
-
-  show(){
-    this.lgModal.show(); 
   }
 
 

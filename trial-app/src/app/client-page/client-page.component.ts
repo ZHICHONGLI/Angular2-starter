@@ -42,7 +42,7 @@ export class ClientPageComponent implements OnInit {
   }
  }
 }
-
+/*
 @Pipe({
     name: 'searchFilter'
 })
@@ -52,3 +52,5 @@ export class searchFilter implements PipeTransform{
     return items.filter(prd => prd.Name.toUpperCase().indexOf(args) !== -1 ||prd.Description.toUpperCase().indexOf(args) !== -1 );
   }
 }
+
+*/

@@ -15,15 +15,16 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 //import { AddnewComponent } from './manager-page/addnew/addnew.component';
 import { ManagerPageModule } from './manager-page/manager-page.module';
 import { ModalDirective, ModalModule } from 'ng2-bootstrap';
-import { searchFilter } from './client-page/client-page.component';
+import { searchFilter } from './search.filter';
+//import { ManagerPageModule } from './manager-page/manager-page.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     FrontPageComponent,
-  //  ManagerPageComponent,
+   // ManagerPageComponent,
     ClientPageComponent,
-    searchFilter
+   searchFilter
   //  AddnewComponent
   ],
   imports: [

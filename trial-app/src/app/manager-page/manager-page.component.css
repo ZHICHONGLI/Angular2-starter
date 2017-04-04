@@ -16,3 +16,8 @@
     background-color: lightgoldenrodyellow;
     color: red !important
 }
+
+.stockhover:hover {
+    background-color: mediumaquamarine;
+    cursor: pointer
+}

@@ -17,6 +17,8 @@ import { ManagerPageModule } from './manager-page/manager-page.module';
 import { ModalDirective, ModalModule } from 'ng2-bootstrap';
 import { searchFilter } from './search.filter';
 //import { ManagerPageModule } from './manager-page/manager-page.module';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { searchFilter } from './search.filter';
    ManagerPageModule,
    NgbModule.forRoot()
   ],
-  providers: [],
+  providers: [
+    {provide: LocationStrategy, useClass: HashLocationStrategy}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

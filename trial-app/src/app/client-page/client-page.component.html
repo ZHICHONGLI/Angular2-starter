@@ -24,11 +24,11 @@
                             <th>#</th>
                             <th>ID</th>
                             <th>Name</th>
-                            <th>Price</th>
-                            <th>Stock</th>
-                            <th>Packing</th>
-                            <th>Description</th>
-                            <th>Status</th>
+                            <th class="text-center">Price</th>
+                            <th class="text-center">Stock</th>
+                            <th class="text-center">Packing</th>
+                            <th class="text-center">Description</th>
+                            <th class="text-center">Status</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -37,12 +37,12 @@
                             <td>{{i+1}}</td>
                             <td>{{prd.id}}</td>
                             <td>{{prd.Name}}</td>
-                            <td>{{prd.Price}}</td>
-                            <td> <span (click)="stockEdit(prd) ">{{stockShow(prd.Status, prd.Stock)}}</span>
+                            <td class="text-center">{{prd.Price}}</td>
+                            <td class="text-center"> <span (click)="stockEdit(prd) ">{{stockShow(prd.Status, prd.Stock)}}</span>
                             </td>
-                            <td>{{prd.Packing}}</td>
-                            <td>{{prd.Description}}</td>
-                            <td><button [className]="statusCls(prd.Status)">{{statusShow(prd.Status)}}</button></td>
+                            <td class="text-center">{{prd.Packing}}</td>
+                            <td class="text-center">{{prd.Description}}</td>
+                            <td class="text-center"><button [className]="statusCls(prd.Status)">{{statusShow(prd.Status)}}</button></td>
                         </tr>
                     </tbody>
 

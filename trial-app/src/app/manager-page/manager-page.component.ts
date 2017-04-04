@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ViewContainerRef, Pipe, PipeTransform } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewContainerRef, Pipe, PipeTransform, ChangeDetectorRef } from '@angular/core';
 import '../data';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
@@ -15,10 +15,11 @@ import { products } from '../data';
 
 export class ManagerPageComponent implements OnInit {
   closeResult: string;
-  constructor(private modalService: NgbModal, private ViewContainerRef: ViewContainerRef) {
+  constructor(private modalService: NgbModal, private ViewContainerRef: ViewContainerRef, private ref: ChangeDetectorRef) {
    this.ViewContainerRef = ViewContainerRef;
    }
-
+   public prds:Array<any> = products;
+   search: string = "";
   ngOnInit() {
   }
  
@@ -80,16 +81,23 @@ export class ManagerPageComponent implements OnInit {
     if(idx==-1){
       return
     };
-    console.log(idx);
-    //this.prds.splice(idx,1);
-    let newPrds = this.prds.slice(idx,1);
-    console.log(newPrds);
-    this.prds = newPrds;
+    /*
+    for(let i =0; i< this.prds.length; i++){
+      if(this.prds[i]==prd){
+        this.prds.splice(i,1);
+        break;
+      }
+    }
+    */
+    this.prds = [
+      ...this.prds.slice(0,idx),
+      ...this.prds.slice(idx+1,this.prds.length)
+    ];
+    //this.prds.splice(this.prds.indexOf(prd),1);
     console.log(this.prds);
-   // this.prds = newPrds;
- }
-prds = products;
-search: string = "";
+    //this.ref.detectChanges();
+ };
+
   
 }
 

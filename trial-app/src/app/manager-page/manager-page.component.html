@@ -27,11 +27,11 @@
                             <th>#</th>
                             <th>ID</th>
                             <th>Name</th>
-                            <th>Price</th>
-                            <th>Stock</th>
-                            <th>Packing</th>
-                            <th>Description</th>
-                            <th>Status</th>
+                            <th class="text-center">Price</th>
+                            <th class="text-center ">Stock</th>
+                            <th class="text-center">Packing</th>
+                            <th class="text-center">Description</th>
+                            <th class="text-center">Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -41,8 +41,8 @@
                             <td>{{i+1}}</td>
                             <td>{{prd.id}}</td>
                             <td>{{prd.Name}}</td>
-                            <td>{{prd.Price}}</td>
-                            <td> <span (click)="stockEdit(prd) " [hidden]="activeItem==prd">{{prd.Stock}}</span><input [(ngModel)]="prd.Stock" [hidden]="activeItem!==prd" size="6">
+                            <td class="text-center">{{prd.Price}}</td>
+                            <td class="text-center"> <span class="stockhover" (click)="stockEdit(prd) " [hidden]="activeItem==prd">{{prd.Stock}}</span><input [(ngModel)]="prd.Stock" [hidden]="activeItem!==prd" size="6">
 
                                 <span [hidden]="activeItem!==prd">
                                     <span class="pointerstyle" (click)="updateStock(prd) ">update</span>
@@ -50,9 +50,9 @@
                                 <span class="pointerstyle" (click)="stockHide() "> cancel</span>
                                 </span>
                             </td>
-                            <td>{{prd.Packing}}</td>
-                            <td>{{prd.Description}}</td>
-                            <td><button [className]="statusCls(prd.Status)" (click)="statusEdit(prd)">{{statusShow(prd.Status)}}</button></td>
+                            <td class="text-center">{{prd.Packing}}</td>
+                            <td class="text-center">{{prd.Description}}</td>
+                            <td class="text-center"><button [className]="statusCls(prd.Status)" (click)="statusEdit(prd)">{{statusShow(prd.Status)}}</button></td>
                             <td><button class="btn btn-secondary" (click)="editPrd(prd) "><i class="fa fa-pencil-square-o " aria-hidden="true "></i></button>
                                 <button class="btn btn-secondary" (click)="delPrd(prd) "><i class="fa fa-trash " aria-hidden="true "></i></button></td>
                         </tr>

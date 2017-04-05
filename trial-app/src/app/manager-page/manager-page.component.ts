@@ -1,24 +1,30 @@
-import { Component, OnInit, ViewChild, ViewContainerRef, Pipe, PipeTransform, ChangeDetectorRef } from '@angular/core';
-import '../data';
+import { Component,Inject, OnInit, ViewChild, ViewContainerRef, Pipe, PipeTransform } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { ModalDirective,ModalModule } from 'ng2-bootstrap';
 import { AddnewComponent } from './addnew/addnew.component';
 import { products } from '../data';
+//import { ModalserviceService } from '../modalservice.service';
 
 
 @Component({
   selector: 'app-manager-page',
   templateUrl: './manager-page.component.html',
-  styleUrls: ['./manager-page.component.css'],
+  styleUrls: ['./manager-page.component.css']
 })
 
 export class ManagerPageComponent implements OnInit {
   closeResult: string;
-  constructor(private modalService: NgbModal, private ViewContainerRef: ViewContainerRef, private ref: ChangeDetectorRef) {
-   this.ViewContainerRef = ViewContainerRef;
+  constructor(private modalService: NgbModal,
+//   private ViewContainerRef: ViewContainerRef, 
+   @Inject('modalService') private mdService
+   ) {
+//   this.ViewContainerRef = ViewContainerRef;
    }
-   public prds:Array<any> = products;
+   public prds:Array<any> = this.mdService.Prods;
+   _subscription = this.mdService.ProdsChange.subscribe((value)=>{
+     this.prds = value;
+   })
    search: string = "";
   ngOnInit() {
   }
@@ -60,11 +66,11 @@ export class ManagerPageComponent implements OnInit {
   prd.Status = !prd.Status;
   console.log(prd.Status);
  }
- statusShow(status:boolean){
+ statusShow(status:boolean):string{
   if (status == true){
     return "Active";
   }else 
-  return "Inactive";
+  return "Deactive";
  }
  statusCls(status:boolean){
    if (status == true) {
@@ -76,19 +82,13 @@ export class ManagerPageComponent implements OnInit {
  editPrd(prd:any){
 
  }
+/* 
  delPrd(prd:any){
     let idx = this.prds.indexOf(prd);
     if(idx==-1){
       return
     };
-    /*
-    for(let i =0; i< this.prds.length; i++){
-      if(this.prds[i]==prd){
-        this.prds.splice(i,1);
-        break;
-      }
-    }
-    */
+
     this.prds = [
       ...this.prds.slice(0,idx),
       ...this.prds.slice(idx+1,this.prds.length)
@@ -97,7 +97,15 @@ export class ManagerPageComponent implements OnInit {
     console.log(this.prds);
     //this.ref.detectChanges();
  };
+*/
+delPrd(prd:any){
+  this.mdService.deleteModal(prd);
+}
 
+
+ addPrd(){
+   this.mdService.addModal();
+ }
   
 }
 

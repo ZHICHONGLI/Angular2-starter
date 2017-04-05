@@ -18,6 +18,7 @@ import { ModalDirective, ModalModule } from 'ng2-bootstrap';
 import { searchFilter } from './search.filter';
 //import { ManagerPageModule } from './manager-page/manager-page.module';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { ModalserviceService } from './modalservice.service';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
    NgbModule.forRoot()
   ],
   providers: [
-    {provide: LocationStrategy, useClass: HashLocationStrategy}
+    {provide: LocationStrategy, useClass: HashLocationStrategy},
+    {provide: 'modalService', useClass: ModalserviceService}
   ],
   bootstrap: [AppComponent]
 })

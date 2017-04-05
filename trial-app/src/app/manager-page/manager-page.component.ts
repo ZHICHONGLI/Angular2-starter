@@ -5,6 +5,7 @@ import { ModalDirective,ModalModule } from 'ng2-bootstrap';
 import { AddnewComponent } from './addnew/addnew.component';
 import { products } from '../data';
 //import { ModalserviceService } from '../modalservice.service';
+import { DelModalComponent } from './del-modal/del-modal.component';
 
 
 @Component({
@@ -15,6 +16,7 @@ import { products } from '../data';
 
 export class ManagerPageComponent implements OnInit {
   closeResult: string;
+  modalObj: any;
   constructor(private modalService: NgbModal,
 //   private ViewContainerRef: ViewContainerRef, 
    @Inject('modalService') private mdService
@@ -29,12 +31,17 @@ export class ManagerPageComponent implements OnInit {
   ngOnInit() {
   }
  
-  open(content){
+  open(content, prd){
+
     this.modalService.open(content).result.then((result)=>{
       this.closeResult = `Closed with: ${result}`;
     },(reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
+    console.log(prd);
+    
+    //this.modalService.open(content).componentInstance.message = prd;
+    
   }
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
@@ -99,7 +106,10 @@ export class ManagerPageComponent implements OnInit {
  };
 */
 delPrd(prd:any){
-  this.mdService.deleteModal(prd);
+ // this.mdService.deleteModal(prd);
+   const modalRef = this.modalService.open(DelModalComponent);
+  modalRef.componentInstance.currentPrd = prd;
+  return modalRef.result;
 }
 
 

@@ -9,15 +9,18 @@ import { ModalDirective,ModalModule } from 'ng2-bootstrap';
 import { ManagerPageComponent } from './manager-page.component';
 import { AddnewComponent } from './addnew/addnew.component';
 import { ManagerSearch } from './managersearch';
+import { DelModalComponent } from './del-modal/del-modal.component';
 
 @NgModule({
     imports: [ BrowserModule, FormsModule, HttpModule, NgbModule, ModalModule.forRoot() ],
     declarations: [ 
         ManagerPageComponent,
         AddnewComponent,
-        ManagerSearch
+        ManagerSearch,
+        DelModalComponent
      ],
-     bootstrap: [AddnewComponent]
+     bootstrap: [AddnewComponent],
+     entryComponents: [DelModalComponent]
 
 })
 export class ManagerPageModule {

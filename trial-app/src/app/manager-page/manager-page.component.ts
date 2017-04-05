@@ -1,6 +1,6 @@
 import { Component,Inject, OnInit, ViewChild, ViewContainerRef, Pipe, PipeTransform } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, ModalDismissReasons, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalDirective,ModalModule } from 'ng2-bootstrap';
 import { AddnewComponent } from './addnew/addnew.component';
 import { products } from '../data';
@@ -17,7 +17,8 @@ import { DelModalComponent } from './del-modal/del-modal.component';
 export class ManagerPageComponent implements OnInit {
   closeResult: string;
   modalObj: any;
-  constructor(private modalService: NgbModal,
+  constructor(private modalService: NgbModal, 
+              //private activeModal: NgbActiveModal,
 //   private ViewContainerRef: ViewContainerRef, 
    @Inject('modalService') private mdService
    ) {

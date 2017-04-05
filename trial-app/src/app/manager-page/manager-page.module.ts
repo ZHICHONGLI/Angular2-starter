@@ -12,7 +12,7 @@ import { ManagerSearch } from './managersearch';
 import { DelModalComponent } from './del-modal/del-modal.component';
 
 @NgModule({
-    imports: [ BrowserModule, FormsModule, HttpModule, NgbModule, ModalModule.forRoot() ],
+    imports: [ BrowserModule, FormsModule, HttpModule, NgbModule.forRoot(), ModalModule.forRoot() ],
     declarations: [ 
         ManagerPageComponent,
         AddnewComponent,

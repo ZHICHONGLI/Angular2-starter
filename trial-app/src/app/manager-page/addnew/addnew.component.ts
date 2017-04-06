@@ -10,13 +10,13 @@ import { productModel } from "../product.model";
   //providers: [ManagerPageComponent]
 })
 export class AddnewComponent implements OnInit {
- private newPrd = new productModel;
+ public newPrd = new productModel;
   constructor(@Inject('modalService')private mdService,
               public activeModal: NgbActiveModal 
   ) {
     
   }
- private statusopts  = [{name: "Active",value:true},{name:"Inactive", value:false}];
+ public statusopts  = [{name: "Active",value:true},{name:"Inactive", value:false}];
   ngOnInit() {
    // console.log("prds loaded"+this.prdss)
   }

@@ -4,7 +4,7 @@ export class productModel{
   Status: boolean;
   Packing: string;
   Stock: number;
-  Proce: number;
+  Price: number;
   Description: string;
   Name: string
 }

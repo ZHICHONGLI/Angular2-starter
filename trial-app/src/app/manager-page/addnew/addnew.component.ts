@@ -1,24 +1,30 @@
 import { Component,Inject,Input, OnInit, ViewChild, ElementRef, forwardRef, ViewContainerRef } from '@angular/core';
-import {ModalDirective} from 'ng2-bootstrap';
-import { ManagerPageComponent } from '../manager-page.component';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+//import { ManagerPageComponent } from '../manager-page.component';
+import { productModel } from "../product.model";
 
 @Component({
   selector: 'addnew',
   templateUrl: './addnew.component.html',
   styleUrls: ['./addnew.component.css'],
-  providers: [ManagerPageComponent]
+  //providers: [ManagerPageComponent]
 })
 export class AddnewComponent implements OnInit {
-newprd : any;
-prdss: any;
-  constructor(@Inject(forwardRef(()=> ManagerPageComponent)) mngComp: ManagerPageComponent) { 
-   this.prdss = mngComp.prds;
+ private newPrd = new productModel;
+  constructor(@Inject('modalService')private mdService,
+              public activeModal: NgbActiveModal 
+  ) {
+    
   }
-  @ViewChild('theBody',{read: ViewContainerRef}) theBody;
-
+ private statusopts  = [{name: "Active",value:true},{name:"Inactive", value:false}];
   ngOnInit() {
    // console.log("prds loaded"+this.prdss)
   }
   
+  addNew(){
+   // console.log(this.newPrd);
+    this.mdService.addConfirm(this.newPrd);
+    this.activeModal.close();
+  }
 
 }

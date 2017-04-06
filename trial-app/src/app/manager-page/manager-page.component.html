@@ -3,14 +3,13 @@
         <h1>Products</h1>
     </div>
     <div class="row">
-        <button class="btn btn-primary newprd" (click)="addPrd()"><i class="fa fa-plus" aria-hidden="true"></i> Add New Product</button>
+        <button class="btn btn-lg btn-outline-primary newprd" (click)="addModal()"><i class="fa fa-plus" aria-hidden="true"></i> Add New Product</button>
     </div>
-    <addnew></addnew>
     <div class="row">
         <div class="card">
             <div class="card-header row">
                 <div class="col-md-8 ">
-                    List of products
+                    List of {{prds.length}} products
                 </div>
                 <div class="col-md-4">
                     <div class="row">
@@ -42,7 +41,7 @@
                             <td>{{i+1}}</td>
                             <td>{{prd.id}}</td>
                             <td>{{prd.Name}}</td>
-                            <td class="text-center">{{prd.Price}}</td>
+                            <td class="text-center">$ {{prd.Price}}</td>
                             <td class="text-center"> <span class="stockhover" (click)="stockEdit(prd) " [hidden]="activeItem==prd">{{prd.Stock}}</span><input [(ngModel)]="prd.Stock" [hidden]="activeItem!==prd" size="6">
 
                                 <span [hidden]="activeItem!==prd">
@@ -66,6 +65,7 @@
         </div>
     </div>
 </div>
+<!--
 <hr>
 <template #content let-c="close" let-d="dismiss">
   <div class="modal-header">
@@ -92,4 +92,4 @@
 
 <pre>{{closeResult}}</pre>
 
-<hr>
+-->

@@ -21,3 +21,9 @@
     background-color: mediumaquamarine;
     cursor: pointer
 }
+
+.card-header {
+    top: 0;
+    position: -webkit-sticky;
+    position: sticky;
+}

@@ -38,8 +38,17 @@ ProdsChange: Subject<any> = new Subject <any>();
    
   }
 
-  addConfirm(){
-
+  addConfirm(newPrd){
+    if(newPrd.Status == "true"){
+      newPrd.Status = true;
+    }else{
+      newPrd.Status = false;
+    }
+    this.Prods = [
+      ...this.Prods,
+      newPrd
+    ];
+    this.ProdsChange.next(this.Prods);
   }
 
 }

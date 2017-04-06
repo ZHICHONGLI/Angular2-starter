@@ -1,14 +1,49 @@
-<div class="modal fade" id="theModal" tabindex="-1" role="dialog" aria-labelledby="theModalLabel">
-    <div class="modal-dialog largeWidth" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="theModalLabel">The Label</h4>
-            </div>
-            <div class="modal-body" #theBody>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal" (close)="close()">Close</button>
-            </div>
-        </div>
+<div class="modal-dialog modal-xl">
+
+    <div class="modal-header ">
+        <h4 class="modal-title">Add New</h4>
+        <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
     </div>
+    <div class="modal-body">
+        <div class="input-group">
+            <span class="input-group-addon">Name</span>
+            <input [(ngModel)]="newPrd.Name" type="text" class="form-control" placeholder="Name" aria-describedby="basic-addon1">
+        </div>
+        <br>
+        <div class="input-group">
+            <span class="input-group-addon">Price</span>
+            <input [(ngModel)]="newPrd.Price" type="number" class="form-control" placeholder="Price" aria-describedby="basic-addon1">
+        </div>
+        <br>
+        <div class="input-group">
+            <span class="input-group-addon">Stock</span>
+            <input [(ngModel)]="newPrd.Stock" type="number" class="form-control" placeholder="Stock" aria-describedby="basic-addon1">
+        </div>
+        <br>
+        <div class="input-group">
+            <span class="input-group-addon">Packing</span>
+            <input [(ngModel)]="newPrd.Packing" type="text" class="form-control" placeholder="Packing" aria-describedby="basic-addon1">
+        </div>
+        <br>
+        <div class="input-group">
+            <span class="input-group-addon">Description</span>
+            <textarea [(ngModel)]="newPrd.Description" type="text" class="form-control" rows="3" placeholder="Description" aria-describedby="basic-addon1"></textarea>
+        </div>
+        <br>
+        <div class="input-group">
+            <span class="input-group-addon">Status</span>
+            <select [(ngModel)]="newPrd.Status" class="form-control">
+                <option [value]="status.value" *ngFor="let status of statusopts" >{{status.name}}</option>
+            </select>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+
+        <button type="button" class="btn btn-success" (click)="addNew()">Add</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="activeModal.close()">Close</button>
+    </div>
+
 </div>

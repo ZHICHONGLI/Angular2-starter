@@ -114,8 +114,9 @@ delPrd(prd:any){
 }
 
 
- addPrd(){
-   this.mdService.addModal();
+ addModal(){
+   const modalRef = this.modalService.open(AddnewComponent);
+   return modalRef.result;
  }
   
 }

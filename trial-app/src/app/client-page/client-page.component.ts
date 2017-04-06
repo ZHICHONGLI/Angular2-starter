@@ -1,4 +1,4 @@
-import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
+import { Component, OnInit, Pipe, PipeTransform,Inject } from '@angular/core';
 import {products} from '../data';
 @Component({
   selector: 'app-client-page',
@@ -10,13 +10,16 @@ import {products} from '../data';
 
 export class ClientPageComponent implements OnInit {
 
-  constructor() {
+  constructor(@Inject('modalService') private mdService) {
    
   }
   search : any="";
 
+  product:any = this.mdService.Prods;
+  _subscription = this.mdService.ProdsChange.subscribe((value)=>{
+     this.product = value;
+   })
 
-  product:any = products;
   ngOnInit() {
     console.log(products );
   }

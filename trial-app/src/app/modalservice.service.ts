@@ -28,14 +28,11 @@ ProdsChange: Subject<any> = new Subject <any>();
     this.ProdsChange.next(this.Prods);
   }
 
-  deleteConfirm(){
-
-  }
-
-  addModal(){
-    console.log("show add modal");
-    //let aaprds = this.mngc.prds;
-   
+ 
+  editComfirm(curPrd){
+    let idx = this.Prods.indexOf(curPrd);
+    this.Prods[idx]=curPrd;
+    this.ProdsChange.next(this.Prods);
   }
 
   addConfirm(newPrd){

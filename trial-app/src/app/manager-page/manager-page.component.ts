@@ -6,6 +6,7 @@ import { AddnewComponent } from './addnew/addnew.component';
 import { products } from '../data';
 //import { ModalserviceService } from '../modalservice.service';
 import { DelModalComponent } from './del-modal/del-modal.component';
+import { EditModalComponent } from "./edit-modal/edit-modal.component";
 
 
 @Component({
@@ -88,7 +89,9 @@ export class ManagerPageComponent implements OnInit {
         };
  }
  editPrd(prd:any){
-
+    const modalRef = this.modalService.open(EditModalComponent);
+    modalRef.componentInstance.curPrd = prd;
+    return modalRef.result;
  }
 /* 
  delPrd(prd:any){
